@@ -15,10 +15,11 @@ python -m venv .venv
 # .venv/bin/pip install -r requirements.txt     # Linux/macOS
 
 # Run
-python -m aws_env
+.venv/Scripts/python -m aws_env   # Windows
+# .venv/bin/python -m aws_env     # Linux/macOS
 ```
 
-No build step — just run `python -m aws_env` directly.
+No build step — just run `python -m aws_env` directly. On Windows, double-click `run.vbs` to launch without a console window.
 
 ## Tech Stack
 

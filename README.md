@@ -34,8 +34,14 @@ python -m venv .venv
 ## Usage
 
 ```bash
-python -m aws_env
+# Windows
+.venv\Scripts\python -m aws_env
+
+# Linux / macOS
+.venv/bin/python -m aws_env
 ```
+
+On Windows, you can also double-click `run.vbs` to launch without a console window.
 
 1. Enter your 6-digit MFA token
 2. Click **Login** (or enable **Auto Enter** to submit automatically when 6 digits are typed)
