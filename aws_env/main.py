@@ -3,7 +3,7 @@ import sys
 import threading
 import tkinter as tk
 
-from gui import MainWindow
+from aws_env.gui import MainWindow
 
 log = logging.getLogger(__name__)
 

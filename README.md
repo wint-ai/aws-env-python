@@ -1,6 +1,6 @@
 # AWS-env
 
-A desktop GUI for AWS MFA authentication. Enter your 6-digit MFA token, get 12-hour session credentials written to `~/.aws/credentials`, and optionally log into Docker/ECR — all in one click.
+A desktop GUI for AWS MFA authentication. Enter your 6-digit MFA token, get 24-hour session credentials written to `~/.aws/credentials`, and optionally log into Docker/ECR — all in one click.
 
 ## Prerequisites
 
@@ -34,11 +34,7 @@ python -m venv .venv
 ## Usage
 
 ```bash
-# Windows
-.venv\Scripts\python main.py
-
-# Linux / macOS
-.venv/bin/python main.py
+python -m aws_env
 ```
 
 1. Enter your 6-digit MFA token

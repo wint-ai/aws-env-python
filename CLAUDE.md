@@ -15,11 +15,10 @@ python -m venv .venv
 # .venv/bin/pip install -r requirements.txt     # Linux/macOS
 
 # Run
-.venv/Scripts/python main.py   # Windows
-# .venv/bin/python main.py     # Linux/macOS
+python -m aws_env
 ```
 
-No build step — just run `main.py` directly.
+No build step — just run `python -m aws_env` directly.
 
 ## Tech Stack
 
@@ -31,14 +30,17 @@ No build step — just run `main.py` directly.
 
 ## Architecture
 
-Five modules, no framework, no abstraction layers:
+All source lives in the `aws_env/` package. Five modules, no framework, no abstraction layers:
 
 ```
-main.py          → Entry point, tkinter root, system tray setup
-gui.py           → MainWindow class (all UI + login orchestration)
-config.py        → AppConfig dataclass + YAML persistence (~/.wde/wde_config.yaml)
-credentials.py   → Read/write ~/.aws/credentials, STS GetSessionToken, validation
-services.py      → ECR auth token decoding, Docker CLI login, Helm stub
+aws_env/
+    __init__.py      → Package marker
+    __main__.py      → `python -m aws_env` entry point
+    main.py          → tkinter root, system tray setup
+    gui.py           → MainWindow class (all UI + login orchestration)
+    config.py        → AppConfig dataclass + YAML persistence (~/.wde/wde_config.yaml)
+    credentials.py   → Read/write ~/.aws/credentials, STS GetSessionToken, validation
+    services.py      → ECR auth token decoding, Docker CLI login, Helm stub
 ```
 
 ### Credential Flow
@@ -70,12 +72,12 @@ Optional — if pystray/Pillow are installed, a green circle icon appears in the
 
 ## Key Constants
 
-Defaults are in `config.py:AppConfig`:
+Defaults are in `aws_env/config.py:AppConfig`:
 - `aws_profile = "wint"`
 - `aws_region = "eu-west-1"`
 - `ecr_registry = "742958722076.dkr.ecr.eu-west-1.amazonaws.com"`
 
-Session duration is in `credentials.py`:
+Session duration is in `aws_env/credentials.py`:
 - `SESSION_DURATION = 86400` (24 hours)
 
 ## Porting Notes

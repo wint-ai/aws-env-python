@@ -4,9 +4,9 @@ import tkinter as tk
 from tkinter import ttk, scrolledtext
 from typing import Optional
 
-from config import AppConfig, save_config, load_config
-from credentials import update_credentials, read_credentials, validate_credentials, SESSION_DURATION
-from services import ecr_login, docker_login, helm_login
+from aws_env.config import AppConfig, save_config, load_config
+from aws_env.credentials import update_credentials, read_credentials, validate_credentials, SESSION_DURATION
+from aws_env.services import ecr_login, docker_login, helm_login
 
 log = logging.getLogger(__name__)
 
